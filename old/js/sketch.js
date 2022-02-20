@@ -32,7 +32,7 @@ function map(current, in_min, in_max, out_min, out_max) {
 const modelParams = {
   flipHorizontal: true, // flip e.g for video
   modelType: "ssd320fpnlite",
-  modelSize: "small",
+  modelSize: "large",
   maxNumBoxes: 20, // maximum number of boxes to detect
   iouThreshold: 0.5, // ioU threshold for non-max suppression
   scoreThreshold: 0.7, // confidence threshold for predictions.
