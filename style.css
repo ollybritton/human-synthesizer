@@ -1,0 +1,39 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  display: block;
+}
+
+.splash {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-title {
+  margin: 0 !important;
+}
+
+.loading {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.app {
+  height: 100vh;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.container {
+  max-width: 75rem;
+  margin: 0 auto;
+}

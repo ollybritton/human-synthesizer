@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Human Synthesizer</title>
+
+  <link rel="stylesheet" type="text/css" href="libraries/tachyons.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <script src="libraries/p5.min.js"></script>
+  <script src="libraries/p5.sound.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/handtrackjs@latest/dist/handtrack.min.js"></script>
+
+</head>
+
+<body>
+
+  <div class="w-100 bg-dark-pink h-100 splash">
+    <h1 class="f-subheadline lh-title avenir white main-title">The Human Synthesizer</h1>
+    <p class="f3 lh-copy avenir near-white ma0">Horizontal hand position corresponds to pitch, vertical hand position
+      corresponds
+      to
+      volume.
+    </p>
+    <p>
+      <button class=" f4 link dim ba bw2 ph3 pv2 mb2 dib navy bg-white code i loading" href="javascript:void();"
+        id="button-start">
+        ...loading hand detection model...
+      </button>
+    </p>
+  </div>
+
+
+  <div class="cf pa3 pa4-ns container avenir app hidden" id="app">
+
+    <div class="fl pl2 w-100 w-60-ns">
+      <h1 class="f3 lh-title">Webcam View</h1>
+      <video class="videobox canvasbox ba bw2 b--light-silver" autoplay="autoplay" id="myvideo"
+        style="display: none;"></video>
+      <canvas id="canvas" class="border canvasbox"></canvas>
+      <div id="mycontainer"></div>
+    </div>
+
+    <div class="fl pl2 w-100 w-40-ns">
+      <h1 class="f3 lh-title">Information</h1>
+      <p class="lh-copy">
+        Here you can make some music with your hands! If you are in reasonable lighting conditions and you hold up your
+        hand to your camera, it will play a note with a frequency determined by the horizontal position and an amplitude
+        determined by the vertical position. This is a little like a
+
+        <a href="https://en.wikipedia.org/wiki/Theremin" class="link blue">
+          theremin
+        </a>
+
+        which uses two antennae as the controls for an instrument.
+      </p>
+
+      <h1 class="f3 lh-title">Settings</h1>
+
+      <div class="f6 mb2 gray i">Lowest note (current <span id="slider-lowest-value">32Hz, ≈C</span>)</div>
+      <input class="w-50 mb2" type="range" min="20" max="1000" value="32" id="slider-lowest">
+
+      <div class="f6 mb2 gray i">Highest note (current <span id="slider-highest-value">260Hz, ≈C</span>)</div>
+      <input class="w-50 mb2" type="range" min="21" max="5000" value="250" id="slider-highest">
+
+      <div class="f6 mb2 gray i">Oscillator type</div>
+      <select name="cars" class="mb3" id="select-oscillator-type">
+        <option value="sine">Sine</option>
+        <option value="square">Square</option>
+        <option value="triangle">Triangle</option>
+        <option value="sawtooth">Sawtooth</option>
+      </select>
+
+      <div class="f6 mb2 mt2 gray i">Options</div>
+      <div>
+        <input type="checkbox" id="option-note-overlay" checked="">
+        <label for="option-note-overlay" class="lh-copy">Show overlay of notes</label>
+      </div>
+      <div>
+        <input type="checkbox" id="option-use-linear" checked="">
+        <label for="option-use-linear" class="lh-copy">Use a linear opposed to logarithmic scale</label>
+      </div>
+      <div>
+        <input type="checkbox" id="option-clamp">
+        <label for="option-clamp" class="lh-copy">Clamp to the nearest semitone</label>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/sketch.js"></script>
+</body>
+
+</html>
